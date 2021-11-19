@@ -6,7 +6,9 @@ SET (PROJECT_PATH "<%= projectPath %>")
 cmake_minimum_required(VERSION 3.15...3.17)
 
 set(CMAKE_TOOLCHAIN_FILE "$ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake")
+if (MSVC)
 set(VCPKG_TARGET_TRIPLET "x64-windows-static" CACHE STRING "")
+endif(MSVC)
 
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake")
