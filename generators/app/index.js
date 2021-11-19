@@ -69,7 +69,23 @@ module.exports = class extends Generator {
 
   write() 
   {
+    this._setupGit();
     this._setupBuild();
+  }
+
+
+
+  _setupGit ()
+  {
+    
+    this.fs.copyTpl
+    (
+      this.templatePath('_gitignore'),
+      this.destinationPath('.gitignore')
+    );
+
+    this.spawnCommand('git', ['init']) ;
+    
   }
 
   _setupBuild() 
