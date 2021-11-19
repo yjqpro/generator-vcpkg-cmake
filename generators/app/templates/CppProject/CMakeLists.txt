@@ -27,3 +27,16 @@ target_compile_features(${PROJECT_NAME}
     cxx_std_17
 )
 
+
+
+if (UNIX)
+    install(TARGETS
+        ${PROJECT_NAME}
+        RUNTIME DESTINATION bin)
+endif()
+
+# build a CPack driven installer package
+include (InstallRequiredSystemLibraries)
+set (CPACK_PACKAGE_VERSION_MAJOR "0")
+set (CPACK_PACKAGE_VERSION_MINOR "1")
+include (CPack)
