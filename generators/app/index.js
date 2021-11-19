@@ -111,6 +111,12 @@ module.exports = class extends Generator {
 
     this.fs.copy
     (
+      this.templatePath("Jenkinsfile"),
+      this.destinationPath("Jenkinsfile")
+    );
+
+    this.fs.copy
+    (
       this.templatePath("CppProject/main.cc"),
       this.destinationPath("src/" + this.config.get("projectPath") + "/main.cc")
     );
