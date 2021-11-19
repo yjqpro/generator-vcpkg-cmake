@@ -109,10 +109,13 @@ module.exports = class extends Generator {
       }
     );
 
-    this.fs.copy
+    this.fs.copyTpl
     (
       this.templatePath("Jenkinsfile"),
-      this.destinationPath("Jenkinsfile")
+      this.destinationPath("Jenkinsfile"),
+      {
+        projectName: this.config.get('projectName')
+      }
     );
 
     this.fs.copy
