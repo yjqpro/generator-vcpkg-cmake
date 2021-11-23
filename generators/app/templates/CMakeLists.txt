@@ -5,10 +5,12 @@ SET (PROJECT_PATH "<%= projectPath %>")
 
 cmake_minimum_required(VERSION 3.15...3.17)
 
+set(VCPKG_OVERLAY_PORTS "${CMAKE_SOURCE_DIR}/vcpkg-overlay-ports" CACHE STRING "")
 set(CMAKE_TOOLCHAIN_FILE "$ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake")
-if (MSVC)
-set(VCPKG_TARGET_TRIPLET "x64-windows-static" CACHE STRING "")
-endif(MSVC)
+
+if(DEFINED ENV{VCPKG_DEFAULT_TRIPLET} AND NOT DEFINED VCPKG_TARGET_TRIPLET)
+    set(VCPKG_TARGET_TRIPLET "$ENV{VCPKG_DEFAULT_TRIPLET}" CACHE STRING "")
+endif()
 
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake")
